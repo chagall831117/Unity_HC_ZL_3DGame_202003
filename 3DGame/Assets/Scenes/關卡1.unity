@@ -494,6 +494,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &664259079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 529891a3e61cbc040b64d23184f9bda5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2091370778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &664259080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664259079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e38c06ea9c30ba48a667965a896eeaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData: {fileID: 11400000, guid: 8dadcd14aa59e484d956f442f3672dbd, type: 2}
+  Ani: {fileID: 0}
+  Hp: 0
+--- !u!135 &664259081
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664259079}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.41
+  m_Center: {x: 0, y: 1.4, z: 0}
 --- !u!1 &813842930
 GameObject:
   m_ObjectHideFlags: 0
