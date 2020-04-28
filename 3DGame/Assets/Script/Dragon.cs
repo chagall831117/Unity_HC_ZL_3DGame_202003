@@ -1,20 +1,26 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Dragon : MonoBehaviour
 {
-    [Header("阿就虛擬搖桿 還想怎樣")]
+    [Header("虛擬搖桿")]
     public Joystick Joy;
-    [Header("阿就移動速度 還想怎樣"),Range(1,1000)]
+    [Header("移動速度"),Range(1,1000)]
     public float speed = 30;
-    [Header("啊就火球 不然呢")]
+    [Header("火球")]
     public GameObject FireBall;
-    [Header("啊就冷卻時間 不然呢")]
+    [Header("冷卻時間")]
     public float Cd = 1;
-    private Animator Ani;
-    private float Timer;
-    public float DelayFire = 0.2f;
+    [Header("血量")]
+    public float Hp = 1;
+    private Animator Ani;//動畫
+    private float Timer;//計時器
+    public float DelayFire = 0.2f;//火球延遲
     public float FireBallSpeed = 500;
+    public Image HpBar;
+    public float HpRatio;
+    public float HpBefore;
     /// <summary>
     /// 移動方法
     /// </summary>
@@ -36,6 +42,9 @@ public class Dragon : MonoBehaviour
     {
         Ani = GetComponent<Animator>();
     }
+    /// <summary>
+    /// 攻擊動畫跟速度
+    /// </summary>
     public void Attack()
     {
         Timer += Time.deltaTime;
@@ -46,6 +55,10 @@ public class Dragon : MonoBehaviour
             StartCoroutine(DelayFireBall());
         }
     }
+    /// <summary>
+    /// 產生火球
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator DelayFireBall()
     {
         yield return new WaitForSeconds(DelayFire);
@@ -59,5 +72,45 @@ public class Dragon : MonoBehaviour
     {
         Move();
         Attack();
+        HpSystem();
+    }
+    /// <summary>
+    /// 血條系統
+    /// </summary>
+    public void HpSystem()
+    {
+        HpRatio = Hp / 100 ;
+        HpBar.fillAmount = Mathf.Lerp(HpBefore,HpRatio,0.1f);
+        HpBefore = Mathf.Lerp(HpBefore, HpRatio, 0.1f);
+    }
+    /// <summary>
+    /// 加速藥水加速
+    /// </summary>
+    public void EatPotionSpeed()
+    {
+        Cd = Mathf.Clamp(Cd - 0.25f, 0.25f, 2);
+    }
+    /// <summary>
+    /// 生命藥水補血
+    /// </summary>
+    public void EatPotionHealth()
+    {
+        HpBefore = Hp/100;
+        Hp = Mathf.Clamp(Hp + 25, 0, 100);
+    }
+    /// <summary>
+    /// 碰撞器
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "加速藥水")
+        {
+            EatPotionSpeed();
+        }
+        if (other.tag == "生命藥水")
+        {
+            EatPotionHealth();
+        }
     }
 }

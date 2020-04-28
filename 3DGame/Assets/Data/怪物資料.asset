@@ -15,3 +15,4 @@ MonoBehaviour:
   Hp: 100
   Atk: 100
   Speed: 1
+  DropHealth: 1

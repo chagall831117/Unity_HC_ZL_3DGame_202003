@@ -6,9 +6,10 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "怪物")
+        if (other.tag == "敵人")
         {
             other.GetComponent<Monster>().Hurt(Damage);
+            Destroy(gameObject);
         }
     }
 }
