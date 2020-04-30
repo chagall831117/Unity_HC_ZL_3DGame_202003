@@ -6,7 +6,9 @@ public class Monster : MonoBehaviour
     public GameObject DropHealth;//生命藥水掉落
     public GameObject DropSpeed;//加速藥水掉落
     public Animator Ani;
-    public float Hp;
+    public GameObject Bullet;//子彈
+    private float Hp;
+    private float Timer;//計時器
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,21 @@ public class Monster : MonoBehaviour
         {
             Instantiate(DropSpeed, transform.position + transform.right * Random.Range(-2, 2), Quaternion.identity);
             print("掉落了加速藥水");
+        }
+    }
+    private void Update()
+    {
+        Attack();
+    }
+    public void Attack()
+    {
+        Timer += Time.deltaTime;
+        if (Timer >= monsterData.Cd)
+        {
+            Timer = 0;
+            GameObject Temp = Instantiate(Bullet, transform.position + transform.forward, Quaternion.identity);
+            Temp.AddComponent<Move>().Speed = monsterData.BulletSpeed;
+            Temp.AddComponent<Ball>().Type = "敵人";
         }
     }
 }

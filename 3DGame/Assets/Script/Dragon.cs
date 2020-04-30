@@ -66,6 +66,7 @@ public class Dragon : MonoBehaviour
         PosFire.z += 8;
         GameObject Temp = Instantiate(FireBall, PosFire, Quaternion.identity);
         Temp.GetComponent<Rigidbody>().AddForce(0, 0, FireBallSpeed);
+        Temp.AddComponent<Ball>().Type = "玩家";
 
     }
     private void Update()
@@ -112,5 +113,22 @@ public class Dragon : MonoBehaviour
         {
             EatPotionHealth();
         }
+    }
+    /// <summary>
+    /// 受傷方法
+    /// </summary>
+    /// <param name="Damage"></param>
+    public void Hurt(float Damage)
+    {
+        HpBefore = Hp / 100;
+        Hp = Mathf.Clamp(Hp -Damage, 0, 100);
+        if (Hp <= 0) Dead();
+    }
+    /// <summary>
+    /// 死亡方法
+    /// </summary>
+    public void Dead()
+    {
+        Ani.SetBool("死亡開關", true);
     }
 }
