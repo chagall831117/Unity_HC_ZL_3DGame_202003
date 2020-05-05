@@ -18,5 +18,5 @@ public class SpawnTime
 public class SpawnMonster
 {
     public GameObject monster;
-    public float X;
+    public float X座標;
 }

@@ -15,10 +15,25 @@ MonoBehaviour:
   spawn:
   - name: "\u7B2C\u4E00\u6CE2"
     time: 3
-    monsters: []
+    monsters:
+    - monster: {fileID: 3794938358334566107, guid: 7b79a20551aca9346b9d494ded4e306c,
+        type: 3}
+      "X\u5EA7\u6A19": 45
+    - monster: {fileID: 3794938358334566107, guid: 7b79a20551aca9346b9d494ded4e306c,
+        type: 3}
+      "X\u5EA7\u6A19": 50
   - name: "\u7B2C\u4E8C\u6CE2"
     time: 5
-    monsters: []
+    monsters:
+    - monster: {fileID: 7888942955282625171, guid: 9c9a843b89344ad44b096ec0d56ce47e,
+        type: 3}
+      "X\u5EA7\u6A19": 45
+    - monster: {fileID: 7888942955282625171, guid: 9c9a843b89344ad44b096ec0d56ce47e,
+        type: 3}
+      "X\u5EA7\u6A19": 50
+    - monster: {fileID: 7888942955282625171, guid: 9c9a843b89344ad44b096ec0d56ce47e,
+        type: 3}
+      "X\u5EA7\u6A19": 55
   - name: "\u7B2C\u4E09\u6CE2"
     time: 7
     monsters: []

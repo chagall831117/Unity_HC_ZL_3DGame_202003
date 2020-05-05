@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
     public Transform[] Terrain;
     public float TerrainSpeed = 1.5f;
+    [Header("畫面物件")]
+    public GameObject Win, Lose;
+    public bool PassLv;
+    public bool Dead;
     public void MoveTerrain()
     {
         //
@@ -25,5 +31,42 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         MoveTerrain();
+        if (Dead) LoseGame();
+    }
+    /// <summary>
+    /// 贏得遊戲
+    /// </summary>
+    public void WinGame()
+    {
+        Win.SetActive(true);
+        PassLv = true;
+    }
+    /// <summary>
+    /// 輸掉遊戲
+    /// </summary>
+    public void LoseGame()
+    {
+        Lose.SetActive(true);
+    }
+    /// <summary>
+    /// 重新開始
+    /// </summary>
+    public void Replay()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    /// <summary>
+    /// 關閉遊戲
+    /// </summary>
+    public void Quit()
+    {
+        Application.Quit();
+    }
+    /// <summary>
+    /// 前往下一關
+    /// </summary>
+    public void NextLv()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

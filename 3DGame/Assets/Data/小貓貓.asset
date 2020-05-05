@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "\u5C0F\u8C93\u8C93"
   m_EditorClassIdentifier: 
   Hp: 100
-  Atk: 100
+  Atk: 25
   Speed: 1
   DropHealth: 1
-  Cd: 2.5
+  Cd: 3
   BulletSpeed: 10

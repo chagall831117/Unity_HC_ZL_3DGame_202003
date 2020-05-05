@@ -22,7 +22,13 @@ public class Monster : MonoBehaviour
     public void Hurt(float Attack)
     {
         Hp -= Attack;
+        GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
+        Invoke("ResetColor", 0.1f);
         if (Hp <= 0) Dead();
+    }
+    private void ResetColor()
+    {
+        GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.white;
     }
     /// <summary>
     /// 死亡方法

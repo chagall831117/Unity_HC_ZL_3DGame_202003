@@ -21,6 +21,7 @@ public class Dragon : MonoBehaviour
     public Image HpBar;
     public float HpRatio;
     public float HpBefore;
+    public GameManager Gm;
     /// <summary>
     /// 移動方法
     /// </summary>
@@ -41,6 +42,7 @@ public class Dragon : MonoBehaviour
     private void Start()
     {
         Ani = GetComponent<Animator>();
+        Gm = FindObjectOfType<GameManager>();
     }
     /// <summary>
     /// 攻擊動畫跟速度
@@ -120,6 +122,7 @@ public class Dragon : MonoBehaviour
     /// <param name="Damage"></param>
     public void Hurt(float Damage)
     {
+        if (Gm.PassLv) return;
         HpBefore = Hp / 100;
         Hp = Mathf.Clamp(Hp -Damage, 0, 100);
         if (Hp <= 0) Dead();
@@ -130,5 +133,6 @@ public class Dragon : MonoBehaviour
     public void Dead()
     {
         Ani.SetBool("死亡開關", true);
+        Gm.Dead = true;
     }
 }
